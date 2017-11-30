@@ -69,16 +69,17 @@ void MouvementBlanc()
 void DeplacementJoueur()
 {
 	mouv mouve;
-	cout << "quel pion voulez vous deplacer ?" << endl;
 	string reponse;
-	cin >> reponse;
 	bool ok = 0;
 	while (!ok)
 	{
-		ok = 1;
+		cout << "quel pion voulez vous deplacer ?" << endl;
+		cin >> reponse;
+		cout << reponse[0] << " " << reponse[1] << endl;
+		mouve.from.x = atoi((string)(reponse[1]).c_str());
 		switch (reponse[0])
 		{
-		case 'A':
+		case 'a':
 			mouve.from.y = 0;
 			break;
 		case 'B':
@@ -108,11 +109,58 @@ void DeplacementJoueur()
 		case 'J':
 			mouve.from.y = 9;
 			break;
-		default :
+		default:
+			cout << "prob lettre" << endl;
+		}
+		cout << "regardons en " << mouve.from.x << " " << mouve.from.y << endl;
+		if (tab[mouve.from.x][mouve.from.y] == 'B')
+			ok = 1;
+	}
+	while (!ok)
+	{
+		cout << "Ou voulez vous allez ?" << endl;
+		cin >> reponse;
+		mouve.to.x = reponse[1];
+		switch (reponse[0])
+		{
+		case 'A':
+			mouve.to.y = 0;
+			break;
+		case 'B':
+			mouve.to.y = 1;
+			break;
+		case 'C':
+			mouve.to.y = 2;
+			break;
+		case 'D':
+			mouve.to.y = 3;
+			break;
+		case 'E':
+			mouve.to.y = 4;
+			break;
+		case 'F':
+			mouve.to.y = 5;
+			break;
+		case 'G':
+			mouve.to.y = 6;
+			break;
+		case 'H':
+			mouve.to.y = 7;
+			break;
+		case 'I':
+			mouve.to.y = 8;
+			break;
+		case 'J':
+			mouve.to.y = 9;
+			break;
+		default:
 			ok = 0;
 		}
-
+		if (mouve.to.x == mouve.from.x + 1)
+			if (mouve.to.y == mouve.from.y + 1 || mouve.to.y == mouve.from.y - 1)
+				ok = 1;
 	}
+	cout << "le pion en " << mouve.from.x << " " << mouve.from.y << " va en " << mouve.to.x << " " << mouve.to.y << endl;
 }
 
 int main()
@@ -143,10 +191,9 @@ int main()
 	Ecrire_tab();
 
 	//boucle de jeu
-	while (partie_finie)
+	while (!partie_finie)
 	{
-		MouvementBlanc();
-		//MouvementNoir();
+		DeplacementJoueur();
 		Ecrire_tab();
 
 	}
