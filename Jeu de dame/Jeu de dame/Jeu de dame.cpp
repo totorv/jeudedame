@@ -76,7 +76,45 @@ void DeplacementJoueur()
 		cout << "quel pion voulez vous deplacer ?" << endl;
 		cin >> reponse;
 		cout << reponse[0] << " " << reponse[1] << endl;
-		mouve.from.x = reponse[1];
+
+		//On converti le char du numero en int
+		switch (reponse[1])
+		{
+		case '0':
+			mouve.from.x = 0;
+			break;
+		case '1':
+			mouve.from.x = 1;
+			break;
+		case '2':
+			mouve.from.x = 2;
+			break;
+		case '3':
+			mouve.from.x = 3;
+			break;
+		case '4':
+			mouve.from.x = 4;
+			break;
+		case '5':
+			mouve.from.x = 5;
+			break;
+		case '6':
+			mouve.from.x = 6;
+			break;
+		case '7':
+			mouve.from.x = 7;
+			break;
+		case '8':
+			mouve.from.x = 8;
+			break;
+		case '9':
+			mouve.from.x = 9;
+			break;
+		default:
+			cout << "prob chiffre" << endl;
+		}
+
+		//on converti la lettre en int
 		switch (reponse[0])
 		{
 		case 'a':
