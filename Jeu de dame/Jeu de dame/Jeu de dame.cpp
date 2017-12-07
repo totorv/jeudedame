@@ -76,7 +76,7 @@ void DeplacementJoueur()
 		cout << "quel pion voulez vous deplacer ?" << endl;
 		cin >> reponse;
 		cout << reponse[0] << " " << reponse[1] << endl;
-		mouve.from.x = atoi((string)(reponse[1]).c_str());
+		mouve.from.x = reponse[1];
 		switch (reponse[0])
 		{
 		case 'a':
